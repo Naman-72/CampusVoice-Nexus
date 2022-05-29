@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block Title %}
+Result
+{% endblock Title %}
+{% block Content %}
+<div class="container my-5 mx-auto">
+    
+    <div class="alert alert-success" role="alert">
+        <h2 class="alert-heading">{{ que.poll_name }}</h2>
+        <hr>
+        <p>Q. {{ que.que_text }}</p>
+        <hr>
+        <p class="mb-0">
+            {% if que.que_image %}
+            <img src="{{ que.que_image.url }}" style="width: 300px;height:300px;" alt="loading"></td>
+            {% else %}
+            {% endif %} 
+        </p>
+    </div>
+    <div class="jumbotron">
+        <table class="table">
+            <thead>
+                <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Choice</th>
+            <th scope="col">Image</th>
+            <th scope="col">No Of Votes</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for i in choice %}
+            <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.choice_text }}</td>
+            <td>
+                {% if i.choice_image %}
+                <img src="{{ i.choice_image.url }}" style="width: 200px;height:200px;" alt="loading"></td>
+                {% else %}
+                None
+                {% endif %}
+            <td><h1>{{ i.votes }}</h1></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+{% endblock Content %}

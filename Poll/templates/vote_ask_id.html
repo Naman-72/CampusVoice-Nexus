@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block Title %} Vote {% endblock Title %} 
+{% block Content %}
+<div class="container text-center my-5 mx-auto">
+<h2>TO VOTE POLL</h2>
+<div class="alert alert-success text-center my-5" role="alert">
+  <div class="container">
+          <form method="post" action="{% url 'vote' %}">
+              {% csrf_token %}
+              <h1>
+                <label for="PollID">ENTER POLL ID : </label>
+              </h1>
+              <input type="number" id="PollID" name="PollID">
+              <button type="submit" class="btn btn-block btn-hover btn-primary btn-lg my-5" name="searchid">
+                  Search
+              </button>
+          </form>
+    </div>
+</div>
+</div>
+{% endblock Content %}
+
