@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.db import  IntegrityError
 # Create your views here.
+def contact(request):
+    return render(request,"contact.html")
 
 def home(request):
     if request.method =="POST":
@@ -116,26 +118,25 @@ def vote(request):
         poll_option = Choice.objects.filter(pk=id)[0:1].get()
         v = poll_option.votes
         a = poll_option.voted.all()
-        print(a)
+
+        # print(a)
         # DONT UPDATE IF ALREADY VOTED
         if request.user in a :
             messages.success(request,"U Have Already Voted For This Choice");
             return redirect('home')
-            return redirect('votechange')
-            return HttpResponse('U HAVE VOTED ALREADY : | ')
         
 
         Choice.objects.filter(pk=id).update(votes=(v+1))
         poll_option.voted.add(request.user)
         messages.success(request,"Voted Successfully")
         return redirect('voted')
-
+    
     return render(request,"vote.html")
 
-def askingForChangeVote(request):
-    return render(request,'votechange.html')
-    return HttpResponse('U HAVE VOTED ALREADY : | ')
-    
+
+def retractVote(request):
+    return render(request,'retractVote.html')
+
 
 def vote_option(request,id):
     poll_option = Choice.objects.filter(pk=id)[0:1].get()

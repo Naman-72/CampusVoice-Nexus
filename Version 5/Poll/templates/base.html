@@ -6,7 +6,6 @@
 </title>
 </head>
 <body>
-{% block bodyafter %}{% endblock bodyafter %}
     <nav class="navbar navbar-expand-lg navbar-dark text-light" style="background-color: rgb(81, 15, 142);min-height:60px;">
         <!-- Just an image -->
     <a class="navbar-brand" href="{% url 'home' %}" > 
@@ -30,7 +29,7 @@
               <a class="nav-link" href="{% url 'results' %}">Result</a>
             </li>
             <li class="nav-item active mx-2">
-              <a class="nav-link" href="{% url 'home' %}">Contact</a>
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
             </li>
             <li class="nav-item active mx-2">
               <a class="nav-link" href="{% url 'all_Polls' %}">All Polls</a>
@@ -45,7 +44,14 @@
           {% endif %}
         </div>
       </nav>
-
+      <div class="container">
+        <div class="row">
+          <di class="col-8 mx-auto my-3">
+            {% block bodyafter %}
+            {% endblock bodyafter %}
+          </di>
+        </div>
+      </div>
 <div class="container-fluid">
     {% if messages %}    
         {% for i in messages  %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person, PollQuestion,Choice
+from .models import Person, PollQuestion,Choice,Response
 # Register your models here.
 
 class ChoiceInLine(admin.TabularInline):
@@ -20,3 +20,9 @@ class PersonAdmin(admin.ModelAdmin):
     list_display = ('username','email',)
 
 admin.site.register(Person, PersonAdmin)
+
+class ResponseAdmin(admin.ModelAdmin):
+    list_display = ('id',)
+
+admin.site.register(Response, ResponseAdmin)
+

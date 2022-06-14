@@ -6,6 +6,8 @@ Vote
 <div class="container my-3">
     <div class="container">
         <h1>{{ pollque.poll_name }}</h1>
+
+        
         <div class="alert alert-info" role="alert">
             {% if pollque %}
                <strong>
@@ -22,21 +24,22 @@ Vote
         {% if pollchoices %}
         <form method="post">
             {% csrf_token %}
-            {% for i in pollchoices %}
-            <input class="form-check-input"
-            style="transform: scale(3);" type="radio"name="checkbox"
-             id="check" value="{{ i.id }}">
-            <div class="card col-lg mx-3 my-3" style="width: 18rem;">
-                {% if i.choice_image  %}
-                <img src="{{ i.choice_image.url }}" class="card-img-top" alt="">
-                {% endif %}
-                <div class="card-body">
-                    <p class="card-title">
-                        {{ i.choice_text }}
-                    </p>
+                {% for i in pollchoices %}
+                <input class="form-check-input"
+                style="transform: scale(3);"  type="radio" name="checkbox"
+                id="check" value="{{ i.id }}">
+                <div class="card col-lg mx-3 my-3" style="width: 18rem;">
+                    {% if i.choice_image  %}
+                    <img src="{{ i.choice_image.url }}" class="card-img-top" alt="">
+                    {% endif %}
+                    {{ forloop.counter }})
+                    <div class="card-body">
+                        <p class="card-title">
+                            {{ i.choice_text }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
             <button type="submit" class="btn btn-success" name="vote_poll">
                 Vote
             </button>                                

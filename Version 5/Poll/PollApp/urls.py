@@ -1,5 +1,5 @@
 from django.urls import include, path
-from PollApp.views import all_Polls, home,create_poll,poll_result,add_option,delete_option,poll_created, signin, signout, signup, vote_option, voted,askingForChangeVote
+from PollApp.views import all_Polls, contact, home,create_poll,poll_result,add_option,delete_option,poll_created, retractVote, signin, signout, signup, vote_option, voted
 from PollApp.views import vote_ask_id,vote
 from django.conf import settings
 from django.conf.urls.static import static
@@ -18,12 +18,18 @@ urlpatterns = [
     path('<int:id>',delete_option,name="delete_option"),
     path('created/',poll_created,name="poll_created"),
 
+
+    path('contact/',contact,name="contact"),
+
+
     # POLL VOTING
     path('vote_ask_id/',vote_ask_id,name="vote_ask_id"),
     path('vote/',vote,name="vote"),
     path('voted/',voted,name="voted"),
     path('vote/<int:id>',vote_option,name="vote_option"),
-    path('voteChange/',askingForChangeVote,name="votechange"),
+    path('retractVote/',retractVote,name="retractVote"),
+
+
 
     # POLL RESULT
     path('result/',poll_result,name="results"),

@@ -6,7 +6,7 @@ Signup
 {% load socialaccount %}
 {% providers_media_js %}
 
-<a href="{% provider_login_url 'google' %}" class="my-3 btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"><i class="fab fa-google me-2"></i> Sign Up with google</a>
+{% comment %} <a href="{% provider_login_url 'google' %}" class="my-3 btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"><i class="fab fa-google me-2"></i> Sign Up with google</a> {% endcomment %}
 
 <a href="{% provider_login_url "facebook" method="oauth2" %}" class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"><i class="fab fa-facebook-f me-2"> </i> Sign Up with facebook</a>
 
