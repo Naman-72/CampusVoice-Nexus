@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block Title %}
+Create Poll
+{% endblock Title %}
+{% block Content %}
+<div class="jumbotron">
+    <h1 class="display-4">Question
+        <button type="button" class="btn btn-primary btn-lg btn-hover mx-auto my-5" data-toggle="modal" data-target="#exampleModal">
+            ADD OPTIONS
+        </button>
+        <a href="created/" class="btn btn-primary btn-lg btn-success my-5 mx-auto">
+            SUBMIT
+        </a>
+    </h1>
+    <hr class="my-4">
+    <div class="alert alert-primary" role="alert">
+    <p class="lead border text-success my-5"> 
+        <strong>
+            {{ que.que_text }} </p>
+        </strong>
+    </div>
+    {% if que.que_image %}
+    <img src="{{ que.que_image.url }}" style="width: 300px;height: 300px;" alt="loading">
+    {% else %}
+    {% endif %}
+    <hr class="my-4">
+    {% comment %} <a class="secondary">
+        <h1 class="display-4">CHOICES</h1>
+    </a> {% endcomment %}
+    {% for i in choices  %}
+    <div class="container my-5">
+    {% comment %} <div class="row"> {% endcomment %}
+            <div class="alert alert-warning my-3 mx-3" role="alert">
+                <p>
+                    {{ i.choice_text }}
+                </p>
+        </div>
+        {% if i.choice_image %}
+        <img src="{{ i.choice_image.url }}" style="width: 300px;height: 300px;" alt="loading">
+        {% else %}
+        {% endif %}
+    {% comment %} </div> {% endcomment %}
+        <div class="row my-3 mx-3">
+            <span class="badge badge-light">
+                <h4>
+                    Recived Votes : 
+                </h4>
+            </span>
+            <button class="btn btn-primary mx-2">{{ i.votes }}</button>
+            <a href="{{ i.id }}" class="btn btn-hover btn-lg btn-danger mx-3">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">ADD OPTION</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group my-5 border border-success">
+                <h2>
+                    <label for="poll_option">Enter CHOICE Here</label>
+                </h2>
+                <textarea class="form-control" id="poll_option" name="poll_option" rows="5"></textarea>
+              </div>
+              <div class="form-group my-5 border border-success">  
+                  <H2>Attach Image</H2>
+                  <div class="form-group mx-auto py-auto mt-3">
+                      <label for="pll_image">Select a file:</label>
+                      <input type="file" id="poll_image" name="poll_image">
+                      <br>
+                      <br>
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-hover btn-lg btn-block">ADD</button>
+              <button type="button" class="btn btn-danger btn-hover btn-lg btn-block" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>    
+</div>
+{% endblock Content %}
