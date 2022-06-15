@@ -58,6 +58,7 @@ Result
     </table>
     </div>
     </div>
+    
 {% else %}
     {% if curr_user == que.created_by %}
         <div class="container my-5 mx-auto">
@@ -101,10 +102,19 @@ Result
                     <td><h1>{{ i.votes }}</h1></td>
                     {% if que.anonymous %}
                     {% else %}
-                    <td>{{ i.voted.all }}</td>
+                    <td>
+                        {% for j in i.voted.all %}
+                        {{ forloop.counter }} ) {{ j }}
+                            <br>
+                        {% endfor %}                    
+                    </td>
                     {% endif %}
                     </tr>
                 {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
             </tbody>
         </table>
         </div>

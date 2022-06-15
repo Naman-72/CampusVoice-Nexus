@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block Title %}
+Poll Creation
+{% endblock Title %}
+{% block Content %}
+
+<div class="container my-3 mx-auto px-3 py-3 text-center bg-primary">
+    <div class="jumbotron bg-light mt-5 text-center">
+      <h1 style="font-family:sans-serif;color:rgb(27, 10, 96)">POLL CREATION </h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group-lg my-5 border bg-success border-warning">
+                <label for="pollname">
+                  <h2 class="px-3 py-1">Enter Poll Name </h2>
+                </label>
+                <input type="text" class="form-control" id="pollname" name="pollname" placeholder="ENTER POLL NAME HERE">
+            </div>
+            <hr style="color :rgb(11, 157, 255) ;   border-style: solid;
+            border-width: 5px;border-color: bluevoilet;"/>
+            <div class="form-group my-5 border bg-info border-warning">
+              <h2>
+                  <label for="PollQuestionText">Enter Your Question</label>
+              </h2>
+              <textarea class="form-control" id="PollQuestionText" name="PollQuestionText" rows="4" required placeholder="ENTER POLL QUE HERE"></textarea>
+            </div>
+            <hr style="color :rgb(11, 157, 255) ;   border-style: solid;
+            border-width: 5px;border-color: bluevoilet;"/>
+            <div class="form-group my-5 border border-info bg-warning">  
+                <H2>Attach Image</H2>
+                <div class="form-group mx-auto py-auto mt-3">
+                    <label for="image">Select a file:</label>
+                    <input type="file" id="image" name="image"><br><br>
+                </div>
+            </div>
+            <hr style="color :rgb(11, 157, 255) ;   border-style: solid;
+            border-width: 5px;border-color: bluevoilet;"/>
+            <div class="form-group my-5 border bg-success border-warning">  
+                <H2>Anonymous</H2>
+                <div class="form-group mx-auto py-auto mt-3" >
+                    <div class="form-check" style="font-size: 150%;">
+                        <input style="width: 10%;
+                        height: 1em;" type="radio" name="anonymous" id="anonymous" value="True" checked>  
+                        <label class="form-check-label" for="anonymous" style="color: white;" >
+                          Anonymous (NOT VISIBLE WHO VOTED FOR WHICH OPTION 👆)
+                        </label>
+                      </div>
+                      <div class="form-check" style="font-size: 150%;">
+                        <input style="width: 10%;
+                        height: 1em;" type="radio" name="anonymous" id="Nanonymous" value="False">
+                        <label class="form-check-label" for="Nanonymous" style="color: rgb(68, 8, 103);">
+                          Non Anonymous ( VISIBLE WHO VOTED FOR WHICH OPTION 👆)
+                        </label>
+                      </div>
+                    {% comment %} <input type="checkbox" data-toggle="switchbutton" name="anonymous" checked data-onstyle="warning" data-offstyle="success"><br><br> {% endcomment %}
+                </div>
+            </div>
+            <hr style="color :rgb(11, 157, 255) ;   border-style: solid;
+            border-width: 5px;border-color: bluevoilet;"/>
+            <div class="form-group my-5 border border-info bg-warning">  
+                <H2>Visiblity of Results To All</H2>
+                <div class="form-group mx-auto py-auto mt-3 text-center">
+                    <div class="form-check" style="font-size: 150%;">
+                        <input style="width: 10%;
+                        height: 1em;" type="radio" name="visible" id="Visible" value="True" checked>
+                        <label class="form-check-label" for="Visible" style="color:rgb(61, 80, 42);">
+                          YES
+                        </label>
+                      </div>
+                      <div class="form-check" style="font-size: 150%;">
+                        <input style="width: 10%;
+                        height: 1em;" type="radio" name="visible" id="Notvisible" value="False">
+                        <label class="form-check-label" style="color:rgb(132, 7, 170);" for="Notvisible">
+                          NO
+                        </label>
+                      </div>
+                </div>
+            </div>
+            <hr style="color :rgb(11, 157, 255) ;   border-style: solid;
+            border-width: 5px;border-color: bluevoilet;"/>
+            <button type="submit" class="btn my-4 btn-outline-success btn-hover btn-lg">Add Options -> </button>
+            <div class="container my-5 py-3">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock Content %}
+
+
+
+
+
+
+{% comment %} <script type="text/javascript">
+    const realfile = document.getElementById('image');
+    const realtext = document.getElementById('image-text');
+    realtext.addEventListener("change",function(){
+        if(realtext.value)
+        {
+            realtext.innerHTML = realtext.value;
+        }
+        else
+        {
+            realtext.innerHTML = "NO FILE CHOOSEN";
+        }
+    });
+</script> {% endcomment %}

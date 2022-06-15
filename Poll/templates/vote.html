@@ -26,7 +26,7 @@ Vote
             {% csrf_token %}
                 {% for i in pollchoices %}
                 <input class="form-check-input"
-                style="transform: scale(3);"  type="radio" name="checkbox"
+                style="transform: scale(3);"  type="checkbox" name="checkbox"
                 id="check" value="{{ i.id }}">
                 <div class="card col-lg mx-3 my-3" style="width: 18rem;">
                     {% if i.choice_image  %}

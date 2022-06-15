@@ -114,20 +114,31 @@ def vote(request):
         return render(request,"vote.html",{"pollque":pollque,"pollchoices":pollchoices})
 
     if request.method=="POST" and "vote_poll" in request.POST :
-        id = request.POST.get('checkbox')
-        poll_option = Choice.objects.filter(pk=id)[0:1].get()
-        v = poll_option.votes
-        a = poll_option.voted.all()
-
+        id = request.POST.getlist('checkbox')
+        # print(id)
+        if len(id) == 0 :
+            messages.warning(request,"U HAVEN'T VOTED FOR ANY OPTION")
+            return redirect('vote_ask_id')
+        for j in id :
+            print(j)
+        
         # print(a)
         # DONT UPDATE IF ALREADY VOTED
-        if request.user in a :
-            messages.success(request,"U Have Already Voted For This Choice");
-            return redirect('home')
+
+        for j in id :
+            poll_option = Choice.objects.filter(pk=j)[0:1].get()
+            a = poll_option.voted.all()
+            if request.user in a :
+                messages.success(request,"U Have Already Voted For This Choice");
+                return redirect('home')
+        
+        for j in id :
+            poll_option = Choice.objects.filter(pk=j)[0:1].get()
+            v = poll_option.votes
+            Choice.objects.filter(pk=j).update(votes=(v+1))
+            poll_option.voted.add(request.user)
         
 
-        Choice.objects.filter(pk=id).update(votes=(v+1))
-        poll_option.voted.add(request.user)
         messages.success(request,"Voted Successfully")
         return redirect('voted')
     
