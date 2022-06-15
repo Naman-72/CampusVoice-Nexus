@@ -119,8 +119,8 @@ def vote(request):
         if len(id) == 0 :
             messages.warning(request,"U HAVEN'T VOTED FOR ANY OPTION")
             return redirect('vote_ask_id')
-        for j in id :
-            print(j)
+        # for j in id :
+        #     print(j)
         
         # print(a)
         # DONT UPDATE IF ALREADY VOTED
@@ -193,7 +193,7 @@ def signup(request):
         birthday = request.POST.get('birthday')
         fn = request.POST.get('fn')
         ln = request.POST.get('ln')
-        print(username,email,fn,ln,phone,birthday)
+        # print(username,email,fn,ln,phone,birthday)
         Password1 = request.POST.get('Password1')
         Password2 = request.POST.get('Password2')
         if Password1!=Password2:
