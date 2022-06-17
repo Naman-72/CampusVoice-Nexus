@@ -37,7 +37,7 @@
             </li>
           </ul>
           {% if user.is_authenticated %}
-          Welcome {{ user.username }}
+          Welcome <a href="{% url 'profile' %}" class="mx-2"> {{ user.username }}</a>
           <a href="{% url 'signout' %}" class="btn btn-outline-success mx-3">Log Out</a>
           {% else %}
           <a href="{% url 'signin' %}" class="btn btn-outline-success mx-3">Login</a>
@@ -68,5 +68,6 @@
     </div>
     {% block Content %}
     {% endblock Content %}
+  
 </div>
 {% include 'footer.html' %}

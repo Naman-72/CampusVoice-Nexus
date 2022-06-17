@@ -216,3 +216,15 @@ def signout(request):
     logout(request)
     messages.success(request,"Logged Out")
     return redirect('home')
+
+
+
+def profile(request):
+    if not request.user.is_authenticated:
+        messages.warning(request,"Please SignIn First")
+        return redirect('signin')
+    polls_by_user = PollQuestion.objects.filter(created_by=request.user)
+    # print(polls_by_user)
+    return render(request,"profile.html",{"user" : request.user,
+                                             "polls" : polls_by_user,
+                                             "no" : len(polls_by_user),})

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block Title %}
+{{ user }}
+{% endblock Title %}
+{% block Content %}
+    <div class="container bg-info">
+        <h1 class="text-center">Polls Made By You</h1>
+        <div class="row text-center">
+            {% if no == 0 %}
+            <div class="jumbotron bg-warning jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">NO POLLS MADE YET</h1>
+                    <p class="lead" style="font-family :cursive;font-size:medium;color:cornflowerblue">PLEASE MAKE ANY POLL TO SEE HERE :)</p>
+                    <hr>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-8 my-auto mx-auto">
+                    {% for i in polls %}
+                    <div >
+                        <div class="container px-3 py-3 my-auto">
+                            <div class="row"  style="border: 4px solid Tomato;background-color:white">
+                                <div class="col-2 mx-auto my-auto py-auto btn btn-hover btn-outline primary">
+                                    <div class="text-center">
+                                        <a href="{% url 'results' %}" style="font-size:large">View Results </a>
+                                        <br>
+                                        <span class="badge" style="font-size: 150%;">Poll Id : {{i.id }} </span>
+                                    </div>
+                                </div>
+                                <div class="col-6 mx-auto py-4">
+                                    <div class="card btn-outline-primary text-center">
+                                        {% if i.que_image  %}
+                                        <img src="{{ i.que_image.url }}" height="300px" width="300px" class="card-img-top" alt="Loading">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ i.poll_name }}</h5>
+                                            <p class="card-text">{{ i.que_text }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock Content %}

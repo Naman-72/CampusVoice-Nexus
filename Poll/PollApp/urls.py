@@ -1,6 +1,6 @@
 from django.urls import include, path
 from PollApp.views import all_Polls, contact, home,create_poll,poll_result,add_option,delete_option,poll_created, retractVote, signin, signout, signup, vote_option, voted
-from PollApp.views import vote_ask_id,vote
+from PollApp.views import vote_ask_id,vote,profile
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -38,6 +38,9 @@ urlpatterns = [
     path("signin/",signin,name="signin"),
     path("signout/",signout,name="signout"),
 
-    path("accounts/",include('allauth.urls'))
+    path("accounts/",include('allauth.urls')),
+
+    # PROFILE
+    path('profile/',profile,name="profile"),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
