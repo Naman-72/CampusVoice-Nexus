@@ -39,7 +39,9 @@ def create_poll(request):
         poll_que = request.POST.get('PollQuestionText')
         poll_visiblity = request.POST.get('visible')
         poll_image=request.FILES.get('image')
-        obj1 = PollQuestion(created_by=created_by,poll_name = poll_name,que_text=poll_que,que_image=poll_image,anonymous=anonymous,visiblity=poll_visiblity)
+        poll_type= request.POST.get('poll_type')
+        print(poll_type)
+        obj1 = PollQuestion(created_by=created_by,poll_name = poll_name,que_text=poll_que,que_image=poll_image,anonymous=anonymous,visiblity=poll_visiblity,poll_type=poll_type)
         obj1.save() 
         messages.success(request,"Poll Question Made Successfully")
         pollid = obj1.id
@@ -65,7 +67,7 @@ def add_option(request):
         if poll_image == None and poll_option == '' :
             messages.warning(request,"BOTH FIELDS EMPTY NOT ALLOWED")
         else :    
-            obj = Choice(poll_question=que,choice_text=poll_option,choice_image=poll_image)
+            obj = Choice(poll_question=que,choice_text=poll_option,choice_image=poll_image,poll_type=que.poll_type)
             PollQuestion.objects.filter(id=que.id).update(noofchoices=que.noofchoices+1)
             messages.success(request,"Poll Choice Made")
             obj.save()
@@ -167,7 +169,11 @@ def poll_result(request):
     if request.method=="POST":
         curruser = request.user
         n = request.POST.get('pollNo')
+        if len(PollQuestion.objects.filter(pk=n))== 0:
+            messages.warning(request,'NO SUCH POLL EXISTS')
+            return redirect('home')
         que = PollQuestion.objects.filter(pk=n)[:1].get() 
+        
         choice = Choice.objects.filter(poll_question=que)
         return render(request,"result.html",{"que":que,"choice":choice,"curr_user":curruser})
     return render(request,"see_result.html")

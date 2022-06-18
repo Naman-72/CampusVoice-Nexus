@@ -3,11 +3,11 @@
     All Polls
 {% endblock Title %}
 {% block Content %}
-    <div style="background-color: SlateBlue;">
+    <div style="background-color: SlateBlue;display:flex;flex-direction:column;">
         {% for i in polls %}
         <div >
             <!-- style="background-color: coral;" -->
-        <div class="container px-3 py-3 my-4">
+        <div class="container px-4 py-3 my-4" style="background:orange;box-shadow: 6px 6px gray;cursor:pointer;">
             <div class="row"  style="border: 4px solid Tomato;background-color:white">
                 <div class="col-2 mx-auto my-auto py-auto">
                     <form method="post" action="{% url 'vote_ask_id' %}">

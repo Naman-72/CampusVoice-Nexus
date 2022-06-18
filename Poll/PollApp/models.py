@@ -12,6 +12,7 @@ class PollQuestion(models.Model):
     anonymous = models.BooleanField(default=True)
     noofchoices = models.BigIntegerField(default=0)
     visiblity = models.BooleanField(default=True)
+    poll_type = models.CharField(max_length=122,default='checkbox')
     def __str__(self) :
         return str(self.id)
 
@@ -21,6 +22,7 @@ class Choice(models.Model):
     choice_image = models.ImageField(blank=True,null=True)
     votes = models.IntegerField(default=0)
     voted = models.ManyToManyField(User,blank=True,related_name='users')
+    poll_type = models.CharField(max_length=122,default='checkbox')
     def __str__(self) :
         return str(self.id)
     
