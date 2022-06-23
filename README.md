@@ -1,14 +1,19 @@
 # Poll-App
 <img src="https://github.com/Naman-72/Poll-App/blob/main/Poll/media/poll.png" data-canonical-src="https://github.com/Naman-72/Poll-App/blob/main/Poll/media/poll.png" width="130" height="130" />
 
+💻 To Run This App
+======
+python manage.py runserver
+<br>
+(It will run at http://localhost:8000/)
 
-Features
+💡 Features
 ======
 <ul>
   
 <!--ANONYMOUS/SIGNED  FEATURE    -->
 <li>
-    <h2><strong>Anonymous / Signed Polls</strong></h2>
+    <h2><strong>⭐ Anonymous / Signed Polls</strong></h2>
     <div>
     <br />
     <strong>Providing Option For Poll Creator</strong>
@@ -50,7 +55,7 @@ Features
   
 <!-- DISPLAY OF RESULT TO ALL VS ONLY TO OWNER  -->
 <li>
-    <h2><strong>Results Visible to All / Only to Owner </h2></strong>
+    <h2><strong>⭐ Results Visible to All / Only to Owner </h2></strong>
     <br />
     <strong>Providing Option For Poll Creator</strong>
     &nbsp;
@@ -87,7 +92,7 @@ Features
   
 <!-- MULTIPLE ANSWER / SINGLE ANSWER CHOICE  -->
  <li>
-    <h2><strong>SINGLE/MULTIPLE ANSWER</h2></strong>
+    <h2><strong>⭐ SINGLE / MULTIPLE ANSWER</h2></strong>
     <br />
     <strong>Providing Option For Poll Creator</strong>
     &nbsp;
@@ -120,7 +125,7 @@ Features
   
 <!--SIGNIN / REGISTER-->
 <li>
-    <h2><strong>SignIn / Register Feature</strong></h2>
+    <h2><strong>⭐ SignIn / Register </strong></h2>
     <h3><strong>Also User Can Use Facebook/GitHub To Register</strong></h2>
     <br />
     <br />
@@ -144,8 +149,8 @@ Features
   
  <!-- VISIT POLL BLOG / POLL CREATED BY OWNER  -->
 <li>
-    <h2><strong>Poll Blog</strong></h2>
-    <h3><strong>User Can Visit the Polls Created by Him By Clicking on His Name</strong></h2>
+    <h2><strong>⭐ Poll Blog</strong></h2>
+    <h3><strong>User Can Visit the All Polls and Also those ones Created by Him</strong></h2>
     <br />
     <br />
     <!--    TABLE  -->
@@ -170,10 +175,10 @@ Features
 </li> 
 </ul>
 
-How To Use The Project
+😃 How To Use The Project
 ======
 <ul>
-  <H3><strong>Creation of Poll</strong></H3>
+  <H3><strong>📝 Creation of Poll</strong></H3>
   <table>
         <tr>
             <td width="50%%">
@@ -194,7 +199,7 @@ How To Use The Project
         </tr>
     </table>
   
-  <H3><strong>Vote Poll</strong></H3>
+  <H3><strong>👆 Vote Poll</strong></H3>
   <table>
         <tr>
             <td width="33%%">
@@ -209,7 +214,7 @@ How To Use The Project
         </tr>
   </table>
   
-  <H3><strong>Results</strong></H3>
+  <H3><strong>📊 Results</strong></H3>
   <table>
         <tr>
             <td width="50%%">
