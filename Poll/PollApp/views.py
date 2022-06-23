@@ -38,7 +38,7 @@ def create_poll(request):
         poll_name=request.POST.get("pollname")
         poll_que = request.POST.get('PollQuestionText')
         poll_visiblity = request.POST.get('visible')
-        poll_image=request.FILES.get('image')
+        poll_image= request.FILES.get('image')
         poll_type= request.POST.get('poll_type')
         print(poll_type)
         obj1 = PollQuestion(created_by=created_by,poll_name = poll_name,que_text=poll_que,que_image=poll_image,anonymous=anonymous,visiblity=poll_visiblity,poll_type=poll_type)
@@ -158,6 +158,7 @@ def vote_option(request,id):
     messages.success(request,"Voted Successfully")
     return redirect('voted')
 
+
 def voted(request):
     return render(request,"voted.html")
     
@@ -177,6 +178,8 @@ def poll_result(request):
         choice = Choice.objects.filter(poll_question=que)
         return render(request,"result.html",{"que":que,"choice":choice,"curr_user":curruser})
     return render(request,"see_result.html")
+
+
 
 def signin(request):
     if request.method=="POST":

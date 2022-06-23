@@ -25,18 +25,26 @@ Vote
         <form method="post">
             {% csrf_token %}
                 {% for i in pollchoices %}
-                <input class="form-check-input"
-                style="transform: scale(3);"  type="{{ i.poll_type }}" name="checkbox"
-                id="check" value="{{ i.id }}">
-                <div class="card col-lg mx-3 my-3" style="width: 18rem;">
-                    {% if i.choice_image  %}
-                    <img src="{{ i.choice_image.url }}" class="card-img-top" alt="">
-                    {% endif %}
-                    {{ forloop.counter }})
-                    <div class="card-body">
-                        <p class="card-title">
-                            {{ i.choice_text }}
-                        </p>
+                <div class="my-4">
+                    <div class="row">
+                        <div class="col-1">
+                            <input class="form-check-input"
+                            style="transform: scale(3);"  type="{{ i.poll_type }}" name="checkbox"
+                            id="check" value="{{ i.id }}">
+                        </div>
+                        {{ forloop.counter }})
+                        <div class="col-10">
+                            <div class="card col-lg" style="width: 18rem;">
+                                {% if i.choice_image  %}
+                                <img src="{{ i.choice_image.url }}" class="card-img-top" alt="">
+                                {% endif %}
+                                <div class="card-body">
+                                    <p class="card-title">
+                                        {{ i.choice_text }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}

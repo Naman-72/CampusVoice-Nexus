@@ -1,49 +1,76 @@
-{% extends 'base.html' %}
-{% block Title %}
-{{ user }}
-{% endblock Title %}
+{% extends 'base.html' %} 
+{% load static %}
+{% block Title %} 
+{{ user }} 
+{% endblock Title %} 
 {% block Content %}
-    <div class="container bg-info">
-        <h1 class="text-center">Polls Made By You</h1>
-        <div class="row text-center">
-            {% if no == 0 %}
-            <div class="jumbotron bg-warning jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4">NO POLLS MADE YET</h1>
-                    <p class="lead" style="font-family :cursive;font-size:medium;color:cornflowerblue">PLEASE MAKE ANY POLL TO SEE HERE :)</p>
-                    <hr>
-                </div>
-            </div>
-            {% else %}
-            <div class="col-8 my-auto mx-auto">
-                    {% for i in polls %}
-                    <div >
-                        <div class="container px-3 py-3 my-auto">
-                            <div class="row"  style="border: 4px solid Tomato;background-color:white">
-                                <div class="col-2 mx-auto my-auto py-auto btn btn-hover btn-outline primary">
-                                    <div class="text-center">
-                                        <a href="{% url 'results' %}" style="font-size:large">View Results </a>
-                                        <br>
-                                        <span class="badge" style="font-size: 150%;">Poll Id : {{i.id }} </span>
-                                    </div>
-                                </div>
-                                <div class="col-6 mx-auto py-4">
-                                    <div class="card btn-outline-primary text-center">
-                                        {% if i.que_image  %}
-                                        <img src="{{ i.que_image.url }}" height="300px" width="300px" class="card-img-top" alt="Loading">
-                                        {% endif %}
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ i.poll_name }}</h5>
-                                            <p class="card-text">{{ i.que_text }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
+<div class="container bg-info fluid-center">
+  <h1 class="text-center">Polls Made By You</h1>
+  <div class="row text-center">
+    {% if no == 0 %}
+      <div class="container-fluid">
+        <img src="https://media.istockphoto.com/vectors/thinking-face-vector-id1286870353?k=20&m=1286870353&s=612x612&w=0&h=ThwLD_fV8-J2Dz4zRghfkTa6nIkAJBbLyNZwmrdL3ww=" alt="loading" height="400px" width="400px" style="clip-path: circle(50% at 50% 50%);">
+        <div class="display_nopoll" style="
+        display:flex;flex-direction:column;align-items:center;justify-content:center;">    
+            <h1>NO POLLS MADE YET</h1>
+            <hr>
+            <p  style="font-family: cursive; font-size: medium; color: rgb(255, 255, 255)">
+            PLEASE MAKE ANY POLL TO SEE HERE :)
+            </p>
+        <hr />
+      </div>
+    </div>
+    {% else %}
+    <div class="col-2">
+        <div class="emoji">
+            <img src="data:image/jpeg;base64,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" alt="" style="clip-path: circle(50% at 50% 50%);">
+    
         </div>
     </div>
+    <div class="col-8 my-auto mx-auto">
+      {% for i in polls %}
+      <div>
+        <div class="container px-3 py-3 my-auto">
+          <div
+            class="row"
+            style="border: 8px solid rgb(33, 217, 5); background-color: white"
+          >
+            <div
+              class="col-2 mx-auto my-auto py-auto btn btn-hover btn-outline primary"
+            >
+              <div class="text-center">
+                <a href="{% url 'results' %}" style="font-size: large"
+                  >View Results
+                </a>
+                <br />
+                <span class="badge" style="font-size: 150%"
+                  >Poll Id : {{i.id }}
+                </span>
+              </div>
+            </div>
+            <div class="col-6 mx-auto py-4">
+              <div class="card btn-outline-primary text-center">
+                {% if i.que_image %}
+                <img
+                  src="{{ i.que_image.url }}"
+                  height="300px"
+                  width="300px"
+                  class="card-img-top"
+                  alt="Loading"
+                />
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ i.poll_name }}</h5>
+                  <p class="card-text">{{ i.que_text }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
 {% endblock Content %}

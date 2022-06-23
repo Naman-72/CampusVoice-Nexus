@@ -3,21 +3,25 @@
 Create Poll
 {% endblock Title %}
 {% block Content %}
-<div class="jumbotron">
-    <h1 class="display-4">Question
+<div class="jumbotron" style="background-color:#FF6F61;">
+    <div class="display:flex;justify-content:center;align-items:center;">
         <button type="button" class="btn btn-primary btn-lg btn-hover mx-auto my-5" data-toggle="modal" data-target="#exampleModal">
             ADD OPTIONS
         </button>
         <a href="created/" class="btn btn-primary btn-lg btn-success my-5 mx-auto">
             SUBMIT
         </a>
-    </h1>
-    <hr class="my-4">
-    <div class="alert alert-primary" role="alert">
-    <p class="lead border text-success my-5"> 
-        <strong>
-            {{ que.que_text }} </p>
-        </strong>
+    </div>
+    <div class="container-fluid">
+        <h1><strong>Question</strong> 
+        </h1>
+        
+            <h3 style="color: white;border-radius:10px;padding: 25px; border:solid 4px yellow"> 
+                <strong>
+                    {{ que.que_text }}
+                </strong>
+            </h3>
+
     </div>
     {% if que.que_image %}
     <img src="{{ que.que_image.url }}" style="width: 300px;height: 300px;" alt="loading">
@@ -41,13 +45,7 @@ Create Poll
         {% endif %}
     {% comment %} </div> {% endcomment %}
         <div class="row my-3 mx-3">
-            <span class="badge badge-light">
-                <h4>
-                    Recived Votes : 
-                </h4>
-            </span>
-            <button class="btn btn-primary mx-2">{{ i.votes }}</button>
-            <a href="{{ i.id }}" class="btn btn-hover btn-lg btn-danger mx-3">Delete</a>
+            <a href="{{ i.id }}" class="btn  btn-hover btn-lg btn-primary mx-3">Delete</a>
         </div>
     </div>
     {% endfor %}

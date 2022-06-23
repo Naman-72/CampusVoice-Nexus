@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+}
+.all_poll{
+    background:#99ccff;
+    transition: all ease 2s;
+}
+.all_poll:hover{
+    background-color: gold;
+    /* box-shadow: 6px 6px rgb(141, 140, 137); */
+    animation: forwards borderChanging 2s linear infinite;
+    transition: all linear 2s;
+}
+@keyframes borderChanging {
+    0%{
+        border: solid 7px rgb(175, 116, 238);
+    }
+    25%{
+        border: solid 7px rgb(28, 28, 191);
+    }
+    50%{
+        border: solid 7px rgb(77, 241, 36);
+    }
+    75%{
+        border: solid 7px rgb(19, 233, 248);
+    }
+    100%{
+        border: solid 7px rgb(230, 244, 227);
+    }
+
+}

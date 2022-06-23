@@ -26,7 +26,7 @@ urlpatterns = [
     path('vote_ask_id/',vote_ask_id,name="vote_ask_id"),
     path('vote/',vote,name="vote"),
     path('voted/',voted,name="voted"),
-    path('vote/<int:id>',vote_option,name="vote_option"),
+    # path('vote/<int:id>',vote_option,name="vote_option"),
     path('retractVote/',retractVote,name="retractVote"),
 
 
