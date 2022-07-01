@@ -132,8 +132,8 @@ python manage.py runserver
     <!--    TABLE  -->
     <table>
         <tr>
-            <th>Anonymous Poll</th>
-            <th>Signed Poll</th>
+            <th>SignIn</th>
+            <th>Registration</th>
         </tr>
         <tr>
             <td width="50%%">
