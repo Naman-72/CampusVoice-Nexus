@@ -13,7 +13,7 @@ python manage.py runserver
   
 <!--ANONYMOUS/SIGNED  FEATURE    -->
 <li>
-    <h2><strong>⭐ Anonymous / Signed Polls</strong></h2>
+    <h2><strong>⭐ Anonymous / Non Anonymous Polls</strong></h2>
     <div>
     <br />
     <strong>Providing Option For Poll Creator</strong>
@@ -31,7 +31,7 @@ python manage.py runserver
     <table>
         <tr>
             <th>Anonymous Poll</th>
-            <th>Signed Poll</th>
+            <th>Non Anonymous Poll</th>
         </tr>
         <tr>
             <td width="50%%">
